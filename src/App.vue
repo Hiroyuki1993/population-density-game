@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld msg="東京２３区人口密度バトル"/>
+    <BaseLayout title="東京２３区人口密度バトル"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BaseLayout from './components/BaseLayout.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    BaseLayout
   }
 }
 </script>
