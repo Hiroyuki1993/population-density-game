@@ -1,0 +1,112 @@
+[
+    {
+        "city": "豊島区",
+        "prefecture": "東京都",
+        "density": "22990"
+    },
+    {
+        "city": "中野区",
+        "prefecture": "東京都",
+        "density": "22013"
+    },
+    {
+        "city": "荒川区",
+        "prefecture": "東京都",
+        "density": "21367"
+    },
+    {
+        "city": "文京区",
+        "prefecture": "東京都",
+        "density": "21265"
+    },
+    {
+        "city": "台東区",
+        "prefecture": "東京都",
+        "density": "20997"
+    },
+    {
+        "city": "墨田区",
+        "prefecture": "東京都",
+        "density": "19791"
+    },
+    {
+        "city": "新宿区",
+        "prefecture": "東京都",
+        "density": "19461"
+    },
+    {
+        "city": "品川区",
+        "prefecture": "東京都",
+        "density": "19046"
+    },
+    {
+        "city": "板橋区",
+        "prefecture": "東京都",
+        "density": "18062"
+    },
+    {
+        "city": "杉並区",
+        "prefecture": "東京都",
+        "density": "17250"
+    },
+    {
+        "city": "北区",
+        "prefecture": "東京都",
+        "density": "17136"
+    },
+    {
+        "city": "中央区",
+        "prefecture": "東京都",
+        "density": "16695"
+    },
+    {
+        "city": "世田谷区",
+        "prefecture": "東京都",
+        "density": "16181"
+    },
+    {
+        "city": "渋谷区",
+        "prefecture": "東京都",
+        "density": "16056"
+    },
+    {
+        "city": "練馬区",
+        "prefecture": "東京都",
+        "density": "15628"
+    },
+    {
+        "city": "江戸川区",
+        "prefecture": "東京都",
+        "density": "13881"
+    },
+    {
+        "city": "足立区",
+        "prefecture": "東京都",
+        "density": "13021"
+    },
+    {
+        "city": "葛飾区",
+        "prefecture": "東京都",
+        "density": "12958"
+    },
+    {
+        "city": "港区",
+        "prefecture": "東京都",
+        "density": "12685"
+    },
+    {
+        "city": "江東区",
+        "prefecture": "東京都",
+        "density": "12183"
+    },
+    {
+        "city": "大田区",
+        "prefecture": "東京都",
+        "density": "12001"
+    },
+    {
+        "city": "千代田区",
+        "prefecture": "東京都",
+        "density": "5722"
+    }
+]

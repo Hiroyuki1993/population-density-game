@@ -2,12 +2,12 @@
   <div class="quiz">
     <h3>どちらが多いでしょう？</h3>
     <ul>
-      <li><button>{{ city1 }}</button></li>
-      <li><button>{{ city2 }}</button></li>
+      <li><button>{{ city1_name }}</button></li>
+      <li><button>{{ city2_name }}</button></li>
     </ul>
     <p>正解です！</p>
-    <p>{{ city1 }}：人口密度 xxx / ㎢ <br /> 
-    {{ city2 }}：人口密度 xxx / ㎢ </p>
+    <p>{{ city1_name }}：人口密度 {{ city1_density }} / ㎢ <br /> 
+    {{ city2_name }}：人口密度 {{ city2_density }} / ㎢ </p>
     <button>次の問題</button>
   </div>
 </template>
@@ -16,8 +16,10 @@
 export default {
   name: 'PopulationQuiz',
   props: {
-    city1: String,
-    city2: String
+    city1_name: String,
+    city2_name: String,
+    city1_density: Number,
+    city2_density: Number,
   }
 }
 </script>
