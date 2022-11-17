@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <BaseLayout title="東京２３区人口密度バトル"/>
+    <BaseLayout />
   </div>
 </template>
 

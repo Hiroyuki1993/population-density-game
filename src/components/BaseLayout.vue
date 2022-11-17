@@ -1,38 +1,39 @@
 <template>
   <div class="base">
-    <h1>{{ title }}</h1>
-    <img src="@/assets/plan_selection_man_color.png" width="300px"/>
-    <p>
-      ランダムに出題される東京都内の２つの区から人口密度の高い区を選ぼう<br>
-      データは2021年10月時点です
-      （<a href="https://uub.jp/rnk/cktv_j.html" target="_blank" rel="noopener">データ取得元</a>）
-    </p>
-    <PopulationQuiz 
-    :city1_name = "city1_name" 
-    :city2_name = "city2_name" 
-    :city1_density = "city1_density"
-    :city2_density = "city2_density" />
+    <h1>東京２３区人口密度バトル</h1>
+    <StartPage v-if="gameStatus==0" @parentMethod="updateGameStatus" />
+    <QuizPage v-if="gameStatus==1" @parentMethod="updateGameStatus" @updateScore="updateGameScore"/>
+    <ResultPage v-if="gameStatus==2" @parentMethod="updateGameStatus" :score="gameScore" />
   </div>
 </template>
 
 <script>
-import PopulationQuiz from './PopulationQuiz.vue'
-import populations from '@/assets/population.json'
+import StartPage from './StartPage.vue'
+import QuizPage from './QuizPage.vue'
+import ResultPage from './ResultPage.vue'
 
 export default {
   name: 'BaseLayout',
   components: {
-    PopulationQuiz
+    StartPage,
+    QuizPage,
+    ResultPage,
   },
   props: {
-    title: String
   },
-  data() {
+  data () {
     return {
-      city1_name: populations[0]["city"],
-      city2_name: populations[1]["city"],
-      city1_density: populations[0]["density"],
-      city2_density: populations[1]["density"]
+      // game の状態を管理する
+      gameStatus: 0,
+      gameScore: 0,
+    }
+  },
+  methods: {
+    updateGameStatus (status) {
+      this.gameStatus = status;
+    },
+    updateGameScore (score) {
+      this.gameScore = score;
     }
   }
 }
