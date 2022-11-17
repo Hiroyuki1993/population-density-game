@@ -5,12 +5,12 @@
     <ul>
       <li>
         <button @click="answerQuiz" class="button is-primary is-large">
-          {{ city1["city"] }}
+          {{ pref1["name"] }}
         </button>
       </li>
       <li>
         <button @click="answerQuiz" class="button is-primary is-large">
-          {{ city2["city"] }}
+          {{ pref2["name"] }}
         </button>
       </li>
     </ul>
@@ -18,19 +18,19 @@
       <article class="message is-success" v-if="corrected">
         <div class="message-header">正解です</div>
         <div class="message-body">
-          <p>{{ city1["city"] }}：人口密度 {{ Number(city1["density"]).toLocaleString() }} 人 / ㎢ <br /> 
-          {{ city2["city"] }}：人口密度 {{ Number(city2["density"]).toLocaleString() }} 人 / ㎢ </p>
+          <p>{{ pref1["name"] }}：人口密度 {{ Number(pref1["density"]).toLocaleString() }} 人 / ㎢ <br /> 
+          {{ pref2["name"] }}：人口密度 {{ Number(pref2["density"]).toLocaleString() }} 人 / ㎢ </p>
         </div>
       </article>
       <article class="message is-warning" v-if="!corrected">
         <div class="message-header">不正解です</div>
         <div class="message-body">
-          <p>{{ city1["city"] }}：人口密度 {{ Number(city1["density"]).toLocaleString() }} 人 / ㎢ <br /> 
-          {{ city2["city"] }}：人口密度 {{ Number(city2["density"]).toLocaleString() }} 人 / ㎢ </p>
+          <p>{{ pref1["name"] }}：人口密度 {{ Number(pref1["density"]).toLocaleString() }} 人 / ㎢ <br /> 
+          {{ pref2["name"] }}：人口密度 {{ Number(pref2["density"]).toLocaleString() }} 人 / ㎢ </p>
         </div>
       </article>
     </div>
-    <button @click="shuffleCities" class="button is-primary is-light" v-if="answered">次の問題</button>
+    <button @click="shuffleChoices" class="button is-primary is-light" v-if="answered">次の問題</button>
   </div>
 </template>
 
@@ -45,8 +45,8 @@ export default {
     const shuffled = populations.sort(() => 0.5 - Math.random());
     let selected = shuffled.slice(0,2);
     return {
-      city1: selected[0],
-      city2: selected[1],
+      pref1: selected[0],
+      pref2: selected[1],
       quiz_completed: 0,
       quiz_corrected: 0,
       answered: false,
@@ -54,20 +54,20 @@ export default {
     }
   },
   methods: {
-    shuffleCities: function() {
-      // populations からランダムに２つの区を取り出す
+    shuffleChoices: function() {
+      // populations からランダムに２つの県を取り出す
       const shuffled = populations.sort(() => 0.5 - Math.random());
       let selected = shuffled.slice(0,2);
-      // 既存のcityと変わらなければ変更
-      if ((this.city1["city"] == selected[0]["city"]) && (this.city2["city"] == selected[1]["city"])) {
+      // 既存のprefと変わらなければ変更
+      if ((this.pref1["name"] == selected[0]["name"]) && (this.pref2["name"] == selected[1]["name"])) {
         selected = shuffled.slice(2,4)
       }
-      if ((this.city2["city"] == selected[0]["city"]) && (this.city1["city"] == selected[1]["city"])) {
+      if ((this.pref2["name"] == selected[0]["name"]) && (this.pref1["name"] == selected[1]["name"])) {
         selected = shuffled.slice(2,4)
       }
-      // 既存のcityを更新する
-      this.city1 = selected[0]
-      this.city2 = selected[1]
+      // 既存のprefを更新する
+      this.pref1 = selected[0]
+      this.pref2 = selected[1]
       // 回答数を１増やす
       this.quiz_completed++
       if (this.quiz_completed == 10) {
@@ -82,16 +82,16 @@ export default {
       }
       this.answered = true;
       // 正誤判定
-      if (this.city1["density"] > this.city2["density"]) {
-        if (this.city1["city"] == event.target.innerText) {
+      if (this.pref1["density"] > this.pref2["density"]) {
+        if (this.pref1["name"] == event.target.innerText) {
           this.corrected = true
           this.quiz_corrected++
         } else {
           this.corrected = false
         }
       }
-      if (this.city2["density"] > this.city1["density"]) {
-        if (this.city2["city"] == event.target.innerText) {
+      if (this.pref2["density"] > this.pref1["density"]) {
+        if (this.pref2["name"] == event.target.innerText) {
           this.corrected = true
           this.quiz_corrected++
         } else {

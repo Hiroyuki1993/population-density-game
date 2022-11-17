@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">東京２３区人口密度バトル</h1>
+    <h1 class="title">４７都道府県<br>人口密度バトル</h1>
     <StartPage v-if="gameStatus==0" @parentMethod="updateGameStatus" />
     <QuizPage v-if="gameStatus==1" @parentMethod="updateGameStatus" @updateScore="updateGameScore"/>
     <ResultPage v-if="gameStatus==2" @parentMethod="updateGameStatus" :score="gameScore" />
