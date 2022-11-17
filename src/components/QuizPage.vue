@@ -1,39 +1,32 @@
 <template>
-  <div class="quiz">
+  <div class="content">
     <h2 class="title">第{{this.quiz_completed+1}}/10問</h2>
     <div class="block">人口密度が高いのはどちらでしょうか？</div>
     <ul>
       <li>
-        <div class="card" @click="answerQuiz">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              {{ city1["city"] }}
-            </div>
-          </div>
-        </div>
+        <button @click="answerQuiz" class="button is-primary is-large">
+          {{ city1["city"] }}
+        </button>
       </li>
       <li>
-        <button @click="answerQuiz">{{ city2["city"] }}</button>
+        <button @click="answerQuiz" class="button is-primary is-large">
+          {{ city2["city"] }}
+        </button>
       </li>
     </ul>
     <div v-if="answered" class="block">
       <article class="message is-success" v-if="corrected">
         <div class="message-header">正解です</div>
         <div class="message-body">
-          <p>{{ city1["city"] }}：人口密度 {{ city1["density"] }} / ㎢ <br /> 
-          {{ city2["city"] }}：人口密度 {{ city2["density"] }} / ㎢ </p>
+          <p>{{ city1["city"] }}：人口密度 {{ Number(city1["density"]).toLocaleString() }} 人 / ㎢ <br /> 
+          {{ city2["city"] }}：人口密度 {{ Number(city2["density"]).toLocaleString() }} 人 / ㎢ </p>
         </div>
       </article>
       <article class="message is-warning" v-if="!corrected">
         <div class="message-header">不正解です</div>
         <div class="message-body">
-          <p>{{ city1["city"] }}：人口密度 {{ city1["density"] }} / ㎢ <br /> 
-          {{ city2["city"] }}：人口密度 {{ city2["density"] }} / ㎢ </p>
+          <p>{{ city1["city"] }}：人口密度 {{ Number(city1["density"]).toLocaleString() }} 人 / ㎢ <br /> 
+          {{ city2["city"] }}：人口密度 {{ Number(city2["density"]).toLocaleString() }} 人 / ㎢ </p>
         </div>
       </article>
     </div>
@@ -84,6 +77,9 @@ export default {
       this.answered = false;
     },
     answerQuiz: function(event) {
+      if (this.answered) {
+        return
+      }
       this.answered = true;
       // 正誤判定
       if (this.city1["density"] > this.city2["density"]) {
