@@ -32,7 +32,7 @@ export default {
   mounted: function(){
     let twitter_base_url = "https://twitter.com/intent/tweet"
     let message = encodeURI('【４７都道府県人口密度クイズ】') + "%0A" + encodeURI('あなたの得点は10点中') + this.score + encodeURI('点でした')
-    let link = "https://population-density-game.hiroyukikuromiya.com"
+    let link = "https://kromiii.moo.jp/population-density-quiz/"
     this.twitterLink = twitter_base_url+"?text="+message+"&url="+link;
   },
   methods: {
