@@ -25,12 +25,15 @@ export default {
     score: Number,
   },
   data () {
-    const twitter_base_url = "https://twitter.com/intent/tweet"
-    const message = `【４７都道府県人口密度クイズ】あなたの得点は10点中${this.score}点でした`
-    const link = "https://example.com"
     return {
-      twitterLink: twitter_base_url+"?text="+encodeURIComponent(message)+"&url="+link
+      twitterLink: ""
     }
+  },
+  mounted: function(){
+    let twitter_base_url = "https://twitter.com/intent/tweet"
+    let message = encodeURI('【４７都道府県人口密度クイズ】') + "%0A" + encodeURI('あなたの得点は10点中') + this.score + encodeURI('点でした')
+    let link = "https://population-density-game.hiroyukikuromiya.com"
+    this.twitterLink = twitter_base_url+"?text="+message+"&url="+link;
   },
   methods: {
     updateGameStatus () {
