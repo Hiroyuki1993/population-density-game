@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>あなたのスコア</h2>
-    <p>10問中{{score}}問正解！</p>
-    <button @click="updateGameStatus">最初に戻る</button>
+    <h3 class="title">あなたのスコア</h3>
+    <h2 class="title">10問中{{score}}問正解！</h2>
+    <button @click="updateGameStatus" class="button is-primary is-light">最初に戻る</button>
   </div>
 </template>
 <script>

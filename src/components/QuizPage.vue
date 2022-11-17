@@ -1,18 +1,43 @@
 <template>
   <div class="quiz">
-    <h2>第{{this.quiz_completed+1}}/10問</h2>
-    <h3>どちらが多いでしょう？</h3>
+    <h2 class="title">第{{this.quiz_completed+1}}/10問</h2>
+    <div class="block">人口密度が高いのはどちらでしょうか？</div>
     <ul>
-      <li><button @click="answerQuiz">{{ city1["city"] }}</button></li>
-      <li><button @click="answerQuiz">{{ city2["city"] }}</button></li>
+      <li>
+        <div class="card" @click="answerQuiz">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              {{ city1["city"] }}
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <button @click="answerQuiz">{{ city2["city"] }}</button>
+      </li>
     </ul>
-    <div v-if="answered">
-      <p v-if="corrected">正解です！</p>
-      <p v-if="!corrected">不正解です</p>
-      <p>{{ city1["city"] }}：人口密度 {{ city1["density"] }} / ㎢ <br /> 
-      {{ city2["city"] }}：人口密度 {{ city2["density"] }} / ㎢ </p>
+    <div v-if="answered" class="block">
+      <article class="message is-success" v-if="corrected">
+        <div class="message-header">正解です</div>
+        <div class="message-body">
+          <p>{{ city1["city"] }}：人口密度 {{ city1["density"] }} / ㎢ <br /> 
+          {{ city2["city"] }}：人口密度 {{ city2["density"] }} / ㎢ </p>
+        </div>
+      </article>
+      <article class="message is-warning" v-if="!corrected">
+        <div class="message-header">不正解です</div>
+        <div class="message-body">
+          <p>{{ city1["city"] }}：人口密度 {{ city1["density"] }} / ㎢ <br /> 
+          {{ city2["city"] }}：人口密度 {{ city2["density"] }} / ㎢ </p>
+        </div>
+      </article>
     </div>
-    <button @click="shuffleCities">次の問題</button>
+    <button @click="shuffleCities" class="button is-primary is-light" v-if="answered">次の問題</button>
   </div>
 </template>
 
